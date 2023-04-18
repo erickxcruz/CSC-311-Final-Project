@@ -12,7 +12,7 @@ import javafx.fxml.Initializable;
 
 /**
  * FXML Controller class
- *
+ * This is the controller for the sign up page. 
  * @author erickcruz
  */
 public class QuaternaryController {
