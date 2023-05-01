@@ -10,35 +10,36 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.assignment4.PrimaryController">
-   <children>
-      <Label fx:id="cineMateLabel" layoutX="35.0" layoutY="36.0" text="CineMate" textFill="#f58426">
-         <font>
-            <Font name="Futura Medium" size="48.0" />
-         </font>
-      </Label>
-      <ImageView fx:id="imageLogo" fitHeight="124.0" fitWidth="200.0" layoutX="200.0" layoutY="132.0">
-         <image>
-            <Image url="@cinemate-low-resolution-logo-color-on-transparent-background.png" />
-         </image>
-      </ImageView>
-      <Label fx:id="emailLabel" layoutX="35.0" layoutY="131.0" text="Username" textFill="#006bb6">
-         <font>
-            <Font name="Futura Medium" size="14.0" />
-         </font>
-      </Label>
-      <TextField fx:id="emailTextField" layoutX="35.0" layoutY="150.0" />
-      <Button fx:id="logInButton" layoutX="211.0" layoutY="148.0" mnemonicParsing="false" onAction="#checkLoginCredentials" style="-fx-background-color: #F58426;" text="Log in" textFill="WHITE">
-         <font>
-            <Font name="Futura Medium" size="13.0" />
-         </font></Button>
-      <Button fx:id="signUpButton" layoutX="235.0" layoutY="214.0" mnemonicParsing="false" onAction="#switchToQuaternary" style="-fx-background-color: #F58426;" text="Sign up" textFill="WHITE" />
-      <PasswordField fx:id="passwordTextField" layoutX="35.0" layoutY="214.0" />
-      <Label fx:id="passwordLabel" layoutX="35.0" layoutY="194.0" text="Password" textFill="#006bb6">
-         <font>
-            <Font name="Futura Medium" size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="logInErrorLabel" layoutX="79.0" layoutY="256.0" textFill="RED" />
-      <Button fx:id="logInButtonEmployee" layoutX="273.0" layoutY="148.0" mnemonicParsing="false" onAction="#checkWorkerLoginCredentials" style="-fx-background-color: #F58426;" text="Employee" textFill="WHITE" />
-   </children>
+    <children>
+        <Label fx:id="cineMateLabel" layoutX="35.0" layoutY="36.0" text="CineMate" textFill="#f58426">
+            <font>
+                <Font name="Futura Medium" size="48.0" />
+            </font>
+        </Label>
+        <ImageView fx:id="imageLogo" fitHeight="124.0" fitWidth="200.0" layoutX="200.0" layoutY="132.0">
+            <image>
+                <Image url="@cinemate-low-resolution-logo-color-on-transparent-background.png" />
+            </image>
+        </ImageView>
+        <Label fx:id="emailLabel" layoutX="35.0" layoutY="131.0" text="Username" textFill="#006bb6">
+            <font>
+                <Font name="Futura Medium" size="14.0" />
+            </font>
+        </Label>
+        <TextField fx:id="emailTextField" layoutX="35.0" layoutY="150.0" />
+        <Button fx:id="logInButton" layoutX="211.0" layoutY="148.0" mnemonicParsing="false" onAction="#checkLoginCredentials" style="-fx-background-color: #F58426;" text="Log in" textFill="WHITE">
+            <font>
+                <Font name="Futura Medium" size="13.0" />
+            </font>
+        </Button>
+        <Button fx:id="signUpButton" layoutX="235.0" layoutY="214.0" mnemonicParsing="false" onAction="#switchToQuaternary" style="-fx-background-color: #F58426;" text="Sign up" textFill="WHITE" />
+        <PasswordField fx:id="passwordTextField" layoutX="35.0" layoutY="214.0" />
+        <Label fx:id="passwordLabel" layoutX="35.0" layoutY="194.0" text="Password" textFill="#006bb6">
+            <font>
+                <Font name="Futura Medium" size="14.0" />
+            </font>
+        </Label>
+        <Label fx:id="logInErrorLabel" layoutX="79.0" layoutY="256.0" textFill="RED" />
+        <Button fx:id="logInButtonEmployee" layoutX="273.0" layoutY="148.0" mnemonicParsing="false" onAction="#checkWorkerLoginCredentials" style="-fx-background-color: #F58426;" text="Employee" textFill="WHITE" />
+    </children>
 </AnchorPane>

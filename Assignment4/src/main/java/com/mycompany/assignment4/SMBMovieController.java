@@ -4,6 +4,7 @@
  */
 package com.mycompany.assignment4;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,13 +22,14 @@ import javafx.scene.layout.GridPane;
  *
  * @author Erick
  */
-public class SMBMovieController  {
+public class SMBMovieController {
+
     @FXML
     private GridPane gridPane;
-    
+
     @FXML
     private Label statusLabel;
-    
+
     // Seats
     @FXML
     private Button seat1;
@@ -69,9 +71,9 @@ public class SMBMovieController  {
     private Button seat19;
     @FXML
     private Button seat20;
-    
+
     private List<Boolean> seatStatus = new ArrayList<>(); // true: seat is booked, false: seat is available
-    
+
     @FXML
     private void initialize() {
         // Initialize seat status to all false (available)
@@ -79,7 +81,7 @@ public class SMBMovieController  {
             seatStatus.add(false);
         }
     }
-    
+
     @FXML
     private void toggleSeat() {
         Button seat = (Button) gridPane.getScene().getFocusOwner();
@@ -87,7 +89,7 @@ public class SMBMovieController  {
         seatStatus.set(seatIndex, !seatStatus.get(seatIndex));
         updateSeatStyle(seat);
     }
-    
+
     private void updateSeatStyle(Button seat) {
         int seatIndex = Integer.parseInt(seat.getText()) - 1;
         if (seatStatus.get(seatIndex)) {
@@ -96,7 +98,7 @@ public class SMBMovieController  {
             seat.setStyle(""); // reset style to default
         }
     }
-    
+
     @FXML
     private void bookSelectedSeats() {
         String bookedSeats = "";
@@ -114,7 +116,9 @@ public class SMBMovieController  {
             statusLabel.setText("No seats selected.");
         }
     }
+    
+    @FXML
+    private void switchToSecondary() throws IOException {
+        App.setRoot("secondary");
+    }
 }
-
-     
-   

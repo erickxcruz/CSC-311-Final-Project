@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "title": "The Shawshank Redemption",
+    "startTime": "1:30 PM",
+    "endTime": "3:30 PM"
+  },
+  {
+    "id": 2,
+    "title": "The Godfather",
+    "startTime": "4:00 PM",
+    "endTime": "6:30 PM"
+  },
+  {
+    "id": 3,
+    "title": "The Dark Knight",
+    "startTime": "7:00 PM",
+    "endTime": "9:30 PM"
+  }
+]

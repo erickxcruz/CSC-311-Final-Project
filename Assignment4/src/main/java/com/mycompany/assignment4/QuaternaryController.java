@@ -28,6 +28,7 @@ import javafx.scene.control.TextField;
  * @author erickcruz
  */
 public class QuaternaryController {
+
     @FXML
     private TextField fullNameTextField;
     @FXML
@@ -40,8 +41,6 @@ public class QuaternaryController {
     private PasswordField passwordTextField;
     @FXML
     private Label registrationLabel;
-
-   
 
     @FXML
     private void switchToPrimary() throws IOException {
@@ -60,8 +59,6 @@ public class QuaternaryController {
         String phone = phoneNumberTextField.getText();
         String username = userNameTextField.getText();
         String password = passwordTextField.getText();
-
-        
 
         // Check email and phone number format
         String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";

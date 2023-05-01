@@ -38,12 +38,13 @@ public class App extends Application {
         Connection conn = openConnection();
         launch();
     }
-    
+
     /**
-     * This is the openConnection Method which allows the database to be accessed using the JDBC client driver.
+     * This is the openConnection Method which allows the database to be
+     * accessed using the JDBC client driver.
+     *
      * @return conn, An instance of Connection.
      */
-    
     public static Connection openConnection() {
         String databaseURL = "";
         Connection conn = null;
