@@ -117,7 +117,7 @@ public class PrimaryController {
         String password = passwordTextField.getText();
 
         if (userName.isEmpty()|| password.isEmpty()) {
-            logInErrorLabel.setText("Please enter both email and password.");
+            logInErrorLabel.setText("Please enter both username and password.");
             return;
         }
 
@@ -171,7 +171,7 @@ public class PrimaryController {
         String password = passwordTextField.getText();
 
         if (userName.isEmpty()|| password.isEmpty()) {
-            logInErrorLabel.setText("Please enter both email and password.");
+            logInErrorLabel.setText("Please enter both username and password.");
             return;
         }
 
@@ -199,7 +199,8 @@ public class PrimaryController {
             boolean loginSuccessful = loginFuture.get();
             if (loginSuccessful) {
                 try {
-                    switchToSecondary();
+                    System.out.println("works");
+                    switchToTertiary();
                     // login successful
                 } catch (IOException ex) {
                 }

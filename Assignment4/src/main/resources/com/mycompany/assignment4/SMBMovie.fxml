@@ -1,5 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 
+<GridPane id="gridPane" fx:id="gridPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="com.mycompany.assignment4.SMBMovieController">
+    <Label text="Movie Theater" GridPane.columnIndex="0" GridPane.columnSpan="5" GridPane.rowIndex="0" />
+    
+    <Label text="Screen" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+    
+    <!-- Seats -->
+    <Label text="Seats" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+    <Button fx:id="seat1" onAction="#toggleSeat" text="1" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+    <Button fx:id="seat2" onAction="#toggleSeat" text="2" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+    <Button fx:id="seat3" onAction="#toggleSeat" text="3" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+    <Button fx:id="seat4" onAction="#toggleSeat" text="4" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+    
+    <Button fx:id="seat5" onAction="#toggleSeat" text="5" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+    <Button fx:id="seat6" onAction="#toggleSeat" text="6" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+    <Button fx:id="seat7" onAction="#toggleSeat" text="7" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+    <Button fx:id="seat8" onAction="#toggleSeat" text="8" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+    
+    <Button fx:id="seat9" onAction="#toggleSeat" text="9" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+    <Button fx:id="seat10" onAction="#toggleSeat" text="10" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+    <Button fx:id="seat11" onAction="#toggleSeat" text="11" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+    <Button fx:id="seat12" onAction="#toggleSeat" text="12" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+    
+    <Button fx:id="seat13" onAction="#toggleSeat" text="13" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+    <Button fx:id="seat14" onAction="#toggleSeat" text="14" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+    <Button fx:id="seat15" onAction="#toggleSeat" text="15" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+    <Button fx:id="seat16" onAction="#toggleSeat" text="16" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+    
+    <Button fx:id="seat17" onAction="#toggleSeat" text="17" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+    <Button fx:id="seat18" onAction="#toggleSeat" text="18" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+<Button fx:id="seat19" onAction="#toggleSeat" text="19" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+<Button fx:id="seat20" onAction="#toggleSeat" text="20" GridPane.columnIndex="4" GridPane.rowIndex="6" />
+<Button onAction="#bookSelectedSeats" text="Book Selected Seats" GridPane.columnIndex="0" GridPane.columnSpan="5" GridPane.rowIndex="7" />
 
+<!-- Status Message -->
+<Label fx:id="statusLabel" GridPane.columnIndex="0" GridPane.columnSpan="5" GridPane.rowIndex="8" />
+   <columnConstraints>
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
+</GridPane>
