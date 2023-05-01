@@ -1,6 +1,17 @@
 package com.mycompany.assignment4;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javafx.animation.FadeTransition;
@@ -38,16 +49,15 @@ public class PrimaryController {
 
     @FXML
     private Button logInButton;
-    
+
     @FXML
-    private Button logInButtonWorker;
+    private Button logInButtonEmployee;
 
     @FXML
     private Button signUpButton;
 
     @FXML
     private ImageView imageLogo;
-    
 
     @FXML
     private void initialize() {
@@ -58,7 +68,7 @@ public class PrimaryController {
         passwordTextField.setOpacity(0);
         logInErrorLabel.setOpacity(0);
         logInButton.setOpacity(0);
-        logInButtonWorker.setOpacity(0);
+        logInButtonEmployee.setOpacity(0);
         signUpButton.setOpacity(0);
         imageLogo.setOpacity(0);
         startUpAnimation();
@@ -90,10 +100,10 @@ public class PrimaryController {
         passwordLabel.setOpacity(1);
         passwordTextField.setOpacity(1);
         logInButton.setOpacity(1);
-        logInButtonWorker.setOpacity(1);
+        logInButtonEmployee.setOpacity(1);
         signUpButton.setOpacity(1);
         imageLogo.setOpacity(1);
-        
+
     }
 
     @FXML
@@ -102,74 +112,108 @@ public class PrimaryController {
     }
 
     @FXML
-    private void checkLoginCredentials() {
-        String regex = "^[A-Za-z0-9+_.-]+@(.+)$";
-        Pattern pattern = Pattern.compile(regex);
-        if (!emailTextField.getText().isBlank() || !passwordTextField.getText().isBlank()) {
+    private void checkLoginCredentials() throws SQLException {
+        String userName = emailTextField.getText();
+        String password = passwordTextField.getText();
 
-            String email = emailTextField.getText();
+        if (userName.isEmpty()|| password.isEmpty()) {
+            logInErrorLabel.setText("Please enter both email and password.");
+            return;
+        }
 
-            Matcher matcher = pattern.matcher(email);
-            int count = 0;
-            /*
-            while (matcher.matches() == false) {
-                count++;
-                if (count == 3) {
+        logInErrorLabel.setOpacity(1);
 
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+        Future<Boolean> loginFuture = executorService.submit(() -> {
+            String url = "jdbc:ucanaccess://CineMate.accdb";
+            try (Connection conn = DriverManager.getConnection(url)) {
+                String sql = "SELECT * FROM Users WHERE Username = ? AND Password = ?";
+                try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+                    stmt.setString(1, userName);
+                    stmt.setString(2, password);
+                    ResultSet rs = stmt.executeQuery();
+                    return rs.next();
                 }
-
-            }
-             */
-
-            try {
-                switchToSecondary();
-            } catch (IOException ex) {
+            } catch (SQLException ex) {
                 ex.printStackTrace();
+                return false;
             }
-            System.out.println(email + " : " + matcher.matches() + "\n");
-            String password = passwordTextField.getText();
-            System.out.println(password);
-        } else {
+        });
+
+        try {
+            boolean loginSuccessful = loginFuture.get();
+            if (loginSuccessful) {
+                try {
+                    
+                    switchToSecondary();
+                    // login successful
+                } catch (IOException ex) {
+                }
+            } else {
+                // login failed
+                logInErrorLabel.setText("Login failed. Please check your username and password.");
+            }
+        } catch (InterruptedException | ExecutionException ex) {
 
         }
+
+        executorService.shutdown();
     }
 
     @FXML
     private void switchToTertiary() throws IOException {
         App.setRoot("tertiary");
     }
-    
+
     @FXML
-    private void checkWorkerLoginCredentials()  {
-        String regex = "^[A-Za-z0-9+_.-]+@(.+)$";
-        Pattern pattern = Pattern.compile(regex);
-        if (!emailTextField.getText().isBlank() || !passwordTextField.getText().isBlank()) {
+    private void checkWorkerLoginCredentials() throws SQLException {
+        String userName = emailTextField.getText();
+        String password = passwordTextField.getText();
 
-            String email = emailTextField.getText();
+        if (userName.isEmpty()|| password.isEmpty()) {
+            logInErrorLabel.setText("Please enter both email and password.");
+            return;
+        }
 
-            Matcher matcher = pattern.matcher(email);
-            int count = 0;
-            while (matcher.matches() == false) {
-                count++;
-                if (count == 3) {
+        logInErrorLabel.setOpacity(1);
 
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+        Future<Boolean> loginFuture = executorService.submit(() -> {
+            String url = "jdbc:ucanaccess://CineMate.accdb";
+            try (Connection conn = DriverManager.getConnection(url)) {
+                String sql = "SELECT * FROM Employees WHERE Username = ? AND Password = ?";
+                try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+                    stmt.setString(1, userName);
+                    stmt.setString(2, password);
+
+                    ResultSet rs = stmt.executeQuery();
+                    return rs.next();
                 }
-
-            }
-
-            try {
-                switchToTertiary();
-            } catch (IOException ex) {
+            } catch (SQLException ex) {
                 ex.printStackTrace();
+                return false;
             }
-            System.out.println(email + " : " + matcher.matches() + "\n");
-            String password = passwordTextField.getText();
-            System.out.println(password);
-        } else {
+        });
+
+        try {
+            boolean loginSuccessful = loginFuture.get();
+            if (loginSuccessful) {
+                try {
+                    switchToSecondary();
+                    // login successful
+                } catch (IOException ex) {
+                }
+            } else {
+                // login failed
+                logInErrorLabel.setText("Login failed. Please check your username and password.");
+            }
+        } catch (InterruptedException | ExecutionException ex) {
 
         }
+
+        executorService.shutdown();
     }
-    
+
     @FXML
     private void switchToQuaternary() throws IOException {
         App.setRoot("quaternary");

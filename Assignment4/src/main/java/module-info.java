@@ -1,5 +1,6 @@
 module com.mycompany.assignment4 {
     requires javafx.controls;
+    requires java.sql; 
     requires javafx.fxml;
     requires java.base;
 

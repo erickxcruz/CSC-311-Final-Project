@@ -7,6 +7,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 /**
  * JavaFX App
@@ -32,7 +35,26 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
+        Connection conn = openConnection();
         launch();
+    }
+    
+    /**
+     * This is the openConnection Method which allows the database to be accessed using the JDBC client driver.
+     * @return conn, An instance of Connection.
+     */
+    
+    public static Connection openConnection() {
+        String databaseURL = "";
+        Connection conn = null;
+
+        try {
+            databaseURL = "jdbc:ucanaccess://.//CineMate.accdb";
+            conn = DriverManager.getConnection(databaseURL);
+            System.out.println("Connected");
+        } catch (SQLException ex) {
+        }
+        return conn;
     }
 
 }

@@ -38,7 +38,7 @@
             <Font name="Futura Medium" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="logInErrorLabel" layoutX="79.0" layoutY="256.0" text="TESTTT" textFill="RED" />
-      <Button fx:id="logInButtonWorker" layoutX="273.0" layoutY="148.0" mnemonicParsing="false" onAction="#checkLoginCredentials" style="-fx-background-color: #F58426;" text="Worker" textFill="WHITE" />
+      <Label fx:id="logInErrorLabel" layoutX="79.0" layoutY="256.0" textFill="RED" />
+      <Button fx:id="logInButtonEmployee" layoutX="273.0" layoutY="148.0" mnemonicParsing="false" onAction="#checkWorkerLoginCredentials" style="-fx-background-color: #F58426;" text="Employee" textFill="WHITE" />
    </children>
 </AnchorPane>
